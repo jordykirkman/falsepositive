@@ -1,16 +1,14 @@
 <div id="sidebar-left">
-	<div class="sidebar">
-	<?php 
-		do_action('comicpress-sidebar-left');
-		if ( !dynamic_sidebar('sidebar-left-sidebar') ) { ?>
-		<div class="sidebar-no-widgets">
-			<?php _e('There are currently no widgets assigned to the left-sidebar, place some!','comicpress'); ?><br />
-			<br />
-			<?php _e('Once you add widgets to this sidebar, this default information will go away.','comicpress'); ?><br />
-			<br />
-			<?php _e('Widgets can be added by going to your dashboard (wp-admin) -> Appearance -> Widgets, drag a widget you want to see into one of the appropriate sidebars.','comicpress'); ?><br />
+	<?php if (comicpress_themeinfo('enable_caps')) { ?><div class="sidebar-head"></div><?php } ?>
+		<div class="sidebar">
+		<?php 
+			if ( !dynamic_sidebar('left-sidebar') ) {
+				if (!is_cp_theme_layout('standard,v')) { 
+					the_widget('comicpress_calendar_widget');
+				}
+				the_widget('comicpress_latest_comics_widget');
+			}
+		?>
 		</div>
-		<?php }
-	?>
-	</div>
+	<?php if (comicpress_themeinfo('enable_caps')) { ?><div class="sidebar-foot"></div><?php } ?>
 </div>

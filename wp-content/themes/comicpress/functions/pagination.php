@@ -13,3 +13,4 @@ function comicpress_pagination() {
 	<?php }
 } 
 
+?>

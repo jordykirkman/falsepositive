@@ -1,10 +1,11 @@
 <?php
 /*
 Widget Name: Site List
+Widget URI: http://frumph.net/
 Description: Display list of sites, which site updated most recently.
 Author: Philip M. Hofer (Frumph)
 Author URI: http://frumph.net/
-Version: 1.04
+Version: 1.03
 */
 if (function_exists('is_multisite')) {
 	if (is_multisite()) {

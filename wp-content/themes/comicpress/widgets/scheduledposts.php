@@ -1,10 +1,11 @@
 <?php
 /*
 Widget Name: Scheduled Posts
+Widget URI: http://comicpress.net/
 Description: Display a list of posts that are due to be scheduled.
 Author: Philip M. Hofer (Frumph)
 Author URI: http://frumph.net/
-Version: 1.1
+Version: 1.03
 */
 
 class comicpress_scheduled_posts_widget extends WP_Widget {
@@ -17,12 +18,12 @@ class comicpress_scheduled_posts_widget extends WP_Widget {
 	}
 	
 	function widget($args, $instance) {
-		extract($args, EXTR_SKIP); 
 		Protect();
+		extract($args, EXTR_SKIP); 
 		echo $before_widget;
 		$title = empty($instance['title']) ? __('Scheduled Posts','comicpress') : apply_filters('widget_title', $instance['title']); 
-		if ( !empty( $title ) ) { echo $before_title . $title . $after_title; };
-		$scheduled_posts = &get_posts('post_status=future&showposts=5');
+		if ( !empty( $title ) ) { echo $before_title . $title . $after_title; }; 
+		$scheduled_posts = get_posts('post_status=future&numberposts=-1');
 		if (empty($scheduled_posts)) {
 			echo '<ul><li>None.</li></ul>';
 		} else { ?>

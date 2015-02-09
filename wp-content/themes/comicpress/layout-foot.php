@@ -1,18 +1,14 @@
-
-				<?php if (!comicpress_sidebars_disabled()) comicpress_get_sidebar('under-blog'); ?>
-			</div>
-<?php 
-if (!comicpress_is_signup() && !comicpress_sidebars_disabled()) {
-	if (comicpress_is_layout('3clgn')) comicpress_get_sidebar('right');
-}
-?>
 		</div>
-<?php 
-if (!comicpress_is_signup() && !comicpress_sidebars_disabled()) {
-	if (comicpress_is_layout('3cl,3cr')) comicpress_get_sidebar('left');
-	if (comicpress_is_layout('2cr,2crw,3c,3cr,3crgn')) comicpress_get_sidebar('right');
-}
-?>
+		<?php if (is_cp_theme_layout('2cvr,2cvl,v3c,v3cr,v3cl,lgn,rgn')) { ?>
+			<?php if (is_cp_theme_layout('lgn') && !comicpress_disable_sidebars()) get_sidebar('right');  ?>
+				<div class="clear"></div>
+			</div>
+			<?php } ?>
+		<?php if (is_cp_theme_layout('3c2r,v3cr') && !comicpress_disable_sidebars()) get_sidebar('left'); ?>
+		<?php if (is_cp_theme_layout('2cr,2cvr,3c,3c2r,v3c,v3cr,rgn') && !comicpress_disable_sidebars()) get_sidebar('right');  ?>
+		<?php if (comicpress_themeinfo('enable_caps')) { ?><div id="subcontent-wrapper-foot"></div><?php } ?>
 		<div class="clear"></div>
 	</div>
+	<div class="clear"></div>
 </div>
+<?php if (comicpress_themeinfo('enable_caps')) { ?><div id="content-wrapper-foot"></div><?php } ?>

@@ -1,7 +1,6 @@
+<?php get_header(); ?>
+	
 <?php 
-remove_action( 'init', 'the_neverending_home_page_init', 10 );
-get_header();
-
 	if(get_query_var('author_name') ) {
 		$curauth = get_user_by('slug', get_query_var('author_name'));
 	} else {
@@ -11,9 +10,8 @@ get_header();
 			<h2><?php _e('No such author.','comicpress'); ?></h2>
 		<?php } else { ?>
 		<div <?php post_class(); ?>>
-			<div class="post-head"></div>
+			<?php if (comicpress_themeinfo('enable_caps')) { ?><div class="post-head"></div><?php } ?>
 			<div class="post-content">
-				<div class="entry">
 					<div class="userpage-avatar">
 						<?php echo str_replace('photo', 'photo instant nocorner itxtalt', get_avatar($curauth->user_email, 64, comicpress_random_default_avatar($curauth->user_email), esc_attr($curauth->display_name, 1))); ?>
 					</div>
@@ -29,16 +27,13 @@ get_header();
 		else
 			$authorname = $curauth->user_login;
 	?>
-							<h2><?php echo $authorname; ?></h2><br />
-							<?php if (current_user_can('manage_options')) { ?>
-								<strong><?php _e('Registered on','comicpress'); ?></strong> <?php echo date('F d, Y', strtotime($curauth->user_registered)); ?><br />
-								<strong><?php _e('Email:','comicpress'); ?></strong> <a href="mailto://<?php echo $curauth->user_email; ?>" target="_blank"><?php echo $curauth->user_email; ?></a><br />
+							<cite><?php echo $authorname; ?></cite><br />
+							<?php _e('Registered on','comicpress'); ?> <?php echo date('l \\t\h\e jS \o\f M, Y',strtotime($curauth->user_registered)); ?><br />
 							<br />
-							<?php } ?>
-							<?php if (!empty($curauth->user_url)) { ?><strong><?php _e('Website:','comicpress'); ?></strong> <a href="<?php echo $curauth->user_url; ?>" target="_blank"><?php echo $curauth->user_url; ?></a><br /><?php } ?>
-							<?php if (!empty($curauth->twitter)) { ?><strong><?php _e('Twitter:','comicpress'); ?></strong> <a href="<?php echo $curauth->twitter; ?>" target="_blank"><?php echo $curauth->twitter; ?></a><br /><?php } ?>
-							<?php if (!empty($curauth->facebook)) { ?><strong><?php _e('Facebook :','comicpress'); ?></strong> <a href="<?php echo $curauth->facebook; ?>" target="_blank"><?php echo $curauth->facebook; ?></a><br /><?php } ?>
-							<?php if (!empty($curauth->googleplus)) { ?><strong><?php _e('Google+ :','comicpress'); ?></strong> <a href="<?php echo $curauth->googleplus; ?>" target="_blank" rel="me"><?php echo $curauth->googleplus; ?></a><br /><?php } ?>
+							<?php if (!empty($curauth->user_url)) { ?><?php _e('Website:','comicpress'); ?> <a href="<?php echo $curauth->user_url; ?>" target="_blank"><?php echo $curauth->user_url; ?></a><br /><?php } ?>
+							<?php if (!empty($curauth->aim)) { ?><?php _e('AIM:','comicpress'); ?> <a href="<?php echo $curauth->user_aim; ?>" target="_blank"><?php echo $curauth->aim; ?></a><br /><?php } ?>
+							<?php if (!empty($curauth->jabber)) { ?><?php _e('Jabber/Google Talk:','comicpress'); ?> <a href="<?php echo $curauth->jabber; ?>" target="_blank"><?php echo $curauth->jabber; ?></a><br /><?php } ?>
+							<?php if (!empty($curauth->yim)) { ?><?php _e('Yahoo IM:','comicpress'); ?> <a href="<?php echo $curauth->jabber; ?>" target="_blank"><?php echo $curauth->jabber; ?></a><br /><?php } ?>
 						</div>
 						<?php if (!empty($curauth->description)) { ?>
 						<div class="userpage-desc">
@@ -47,28 +42,26 @@ get_header();
 						<?php } ?>
 					</div>
 					<div class="clear"></div>
-
-<?php
-	if (have_posts()) {
-?>
 					<div class="userpage-posts">
-						<h3><?php _e('Posts by','comicpress'); ?> <?php echo $authorname; ?> &not;</h3>
-						<ol>
-						<table class="author-posts">
-						<?php while (have_posts()) : the_post(); ?>
-							<tr>
-								<td class="author-archive-date" align="right"><?php the_time('M j, Y') ?></td>
-								<td class="author-archive-title"><a href="<?php the_permalink(); ?>"><?php the_title() ?></a></td>
-							</tr>
-						<?php endwhile; ?>
-						</table>
-						</ol>
+						<?php if (have_posts()) { ?>
+							<h3><?php _e('Posts by','comicpress'); ?> <?php echo $authorname; ?> (<?php echo count_user_posts($curauth->ID); ?>) &not;</h3>
+							<?php // this area is a loop that shows what posts the person has done. ?>
+							<ol>
+									<li><table class="month-table">
+							<?php while (have_posts()) : the_post() ?>
+									<tr><td class="archive-date" align="right"><?php the_time('M j, Y') ?></td><td class="archive-title"><a href="<?php the_permalink(); ?>"><?php the_title() ?></a></td>
+													
+							<?php endwhile; ?>
+									</table></li>
+							</ol>
+							
+							<?php comicpress_pagination(); ?>
+						
+						<?php } ?>
 					</div>
-<?php } ?>
 				</div>
+				<?php if (comicpress_themeinfo('enable_caps')) { ?><div class="post-foot"></div><?php } ?>
 			</div>
-			<div class="post-foot"></div>
-		</div>
-<?php 
-	}
-get_footer();
+		<?php } ?>
+
+<?php get_footer() ?>

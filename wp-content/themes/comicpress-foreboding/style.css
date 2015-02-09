@@ -1,0 +1,463 @@
+/*
+Theme Name: ComicPress ForeBoding
+Theme URI: http://frumph.net/
+Template: comicpress
+Description: Publish a comic with WordPress.  <a href="http://comicpress.org">Visit the ComicPress Website.</a>
+<meta name="google-site-verification" content="_fk9h3hBxKAAZiO2S5YWyT4T8aMRNN_ygQderjnOiAw" />
+Author: Philip M. Hofer (Frumph)
+Author URI: http://frumph.net/
+Version: 1.1
+.
+The CSS, XHTML and design is released under GPL v3:
+http://www.opensource.org/licenses/gpl-3.0.html
+.
+*/
+
+@import url("../comicpress/style.css");
+
+/* STANDARD TAGS */
+
+body,html {
+	margin: 0;
+	color: #ccc;
+	font-family: 'Verdana';
+	background: #000 url('http://www.dualcomic.com/falsepositiveimages/background.jpg') top center no-repeat;
+}
+
+body.layout-standard, body.layout-v, html body.layout-v, html body.layout-standard {
+	background: #000 url('images/background-780.jpg') top center no-repeat;
+}
+
+
+#page, #page-wide {
+	position: relative;
+	margin: 0 auto;
+}
+
+a { color: #fff; }
+a:hover { color: #f00; }
+
+#header {
+	height: 72px;
+	width: 980px;
+}
+
+#header h1 {
+	margin-top: 40px;
+	float: left;
+}
+
+#header .description {
+	clear: both;
+	float: left;
+}
+
+.post-author-gravatar img {
+	border: solid 1px #000;
+}
+
+.post-foot {
+	padding: 0;
+	margin: 0 0 20px;
+}
+
+.post-content, #comment-wrapper {
+	color: #ccc;
+	background: url('images/postbg.png') repeat;
+	border-left: solid 2px #444;
+	border-top: solid 2px #444;
+	padding: 5px;
+}
+
+	.post h2, .post h2 a {
+		color: #fff;
+	}
+	
+	.post a, .post-page a, .post-comic a, #comment-wrapper a {
+		color: #fff;
+	}
+	
+	.post a:hover, .post-page a:hover, .post-comic a:hover, #comment-wrapper a:hover {
+		color: #b00;
+	}
+
+#menubar-wrapper {
+	background-color: Transparent;
+	margin: 0 auto;
+}
+
+
+#content-wrapper {
+	padding: 5px 0;
+}
+
+.layout-standard .narrowcolumn, .layout-v .narrowcolumn {
+	width: 548px;
+}
+
+	.button {
+		background: #aaa url('images/menu.png');
+		color: #fff;
+		font-family: 'Arial', sans-serif;
+		font-size: 13px;
+		line-height: 13px;
+		border: 1px solid #333;
+		cursor: pointer;
+	}
+		
+	.button:hover {
+		color: #eee;
+		background: #f00 url('images/menu.png') 0 -75px;
+	}
+	
+/* COMMENT LINK */
+
+.comment-link {
+	height: 25px;
+	line-height: 20px;
+	font-family: 'Arial', sans-serif;
+	font-weight: bold;
+	text-align: right;
+}
+		
+	.comment-balloon {
+		width: 30px;
+		height: 25px;
+		display: block;
+		margin: 0 0 0 5px;
+		float: right;
+		overflow: hidden;
+		text-align: center;
+		line-height: 16px;
+		font-family: 'Georgia', serif;
+		font-size: 16px;
+		font-weight: normal;
+		background: url('images/comment-balloon.png') no-repeat;
+	}
+
+		.comment-link a .comment-balloon {
+			color: #fff;
+		}
+	
+		.comment-link a:hover .comment-balloon {
+			color: #fff;
+			background-position: 0 -25px;
+		}
+		
+	.comment-balloon-empty {
+		font-size: 20px;
+		line-height: 30px;
+		}
+		
+/* WIDGETS */
+
+.archive-dropdown-wrap {
+	background: url('images/browse-search.png') no-repeat;
+}
+
+	.archive-dropdown-wrap:hover {
+		background-position: 0 -23px;
+	}
+
+.archive-dropdown {
+	margin: 0;
+	padding: 0;
+	width: 166px;
+	height: 23px;
+	font-size: 12px;
+	font-family: 'Arial' , sans-serif;
+	border: none;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	cursor: pointer;
+}
+
+/* SEARCH */
+
+#s-search, #s-transcript {
+	width: 168px;
+	padding: 4px 0 0 5px;
+	font-size: 12px;
+	height: 19px;
+	font-family: 'Arial' , sans-serif;
+	color: #000;
+	border: none;
+	float: left;
+	background: url('images/browse-search.png') 0 -46px no-repeat;
+}
+
+	#s-search:hover, #s-search:focus, #s-transcript:hover, #s-transcript:focus {
+		color: #550000;
+		background-position: 0 -69px;
+	}
+
+	#searchform button, #searchform-transcript button {
+		padding: 0;
+		margin: 0;
+		border: none;
+		height: 23px;
+		width: 23px;
+		line-height: 0;
+		font-size: 0;
+		cursor: pointer;
+		text-indent: -9999px;
+		background: url('images/browse-search.png') -143px -46px no-repeat;
+	}
+
+	#searchform button:hover, #searchform-transcript button:hover {
+		background-position: -143px -69px;
+	}
+
+	#searchform button:hover, #searchform-transcript button:-moz-focus-inner {
+		border: 0;
+	}
+
+/* GALLERY */
+
+.gallery-image {
+	width: 518px;
+	border: 1px solid #000;
+	overflow: hidden;
+	background: #000;
+	text-align: center;
+}
+
+.gallery-caption {
+	font-size: 11px;
+}
+
+	.gallery-caption p {
+		width: 510px;
+		padding: 5px;
+		margin: 0;
+		text-align: center;
+		color: #fff;
+		background: #000;
+	}
+
+.imagenav-wrap {
+	margin: 5px 0 0 0;
+}
+
+.imagenav {
+	width: 77px;
+	height: 77px;
+	float: left;
+	overflow: hidden;
+}
+
+.imagenav-center {
+	width: 344px;
+	height: 65px;
+	margin: 0 5px;
+	padding: 10px 5px 0 5px;
+	float: left;
+	color: #000;
+	text-align: center;
+	border: 1px solid #000;
+	overflow: hidden;
+}
+
+.imagetitle {
+	color: #000;
+	font-size: 18px;
+}
+
+.imagenav-bg {
+	width: 75px;
+	height: 75px;
+	position: absolute;
+	z-index: 0;
+	background: #ddd;
+	border: 1px solid #000;
+	overflow: hidden;
+}
+
+.imagenav-bg img {
+	width: 75px;
+	height: 75px;
+}
+
+.imagenav-arrow {
+	width: 75px;
+	height: 75px;
+	position: absolute;
+	z-index: 1;
+	color: #fff;
+	font-size: 80px;
+	font-weight: bold;
+	line-height: 75px;
+	text-align: center;
+	border: 1px solid #000;
+	float: left;
+}
+
+.imagenav-link {
+	width: 75px;
+	height: 75px;
+	position: absolute;
+	z-index: 2;
+	border: 1px solid #000;
+	float: left;
+	overflow: hidden;
+}
+
+.imagenav-link img {
+	width: 75px;
+	height: 75px; 
+/*		opacity: 0.50; 		filter: alpha(opacity=50); */
+}
+
+.imagenav-link img:hover {
+/*		opacity: 0.00;  	filter: alpha(opacity=0); */
+}
+
+/* Pagination */
+
+#wp-paginav {
+	color: #fff;
+	background: url('images/menu.png');
+	text-align: left;
+	border: 1px solid #000;
+	-moz-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+#paginav {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	float: left;
+	line-height: 25px;
+	font-size: 13px;
+	border-right: 1px solid #222;
+}
+
+	#paginav .paginav-pages, #paginav .paginav-extend {
+		padding: 0 15px 0 15px;
+	}
+
+	#paginav a {
+		padding: 0px 10px 0 10px;
+		display: block;
+		color: #777;
+		text-decoration: none;
+	}
+
+	#paginav ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	#paginav li {
+		float: left;
+	}
+
+	#paginav li a {
+		border-left: 1px solid #111;
+		border-right: 1px solid #444;
+		color: #eee;
+	}
+
+	#paginav .paginav-next, #paginav .paginav-previous {
+		font-size: 20px;
+	}
+
+	#paginav .paginav-current, #paginav .current {
+		padding: 0px 10px 0 10px;
+		color: #fff;
+		border-left: 1px solid #222;
+		background: url('images/menu.png') 0 -150px;
+	}
+
+	#paginav li:hover a {
+		border-left: 1px solid #333;
+		border-right: 1px solid #555;
+		color: #fff; 
+		background: url('images/menu.png') 0 -75px;
+	}
+
+
+#wp-calendar-wrap, .cpcal-month {
+	color: #ccc;
+	background: #111;
+	border: solid 1px #333;
+	-moz-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.cpcal-day a {
+	font-size: 10px;
+}
+
+#wp-calendar a, .cpcal-day a {
+	color: #ff0;
+}
+
+#wp-calendar a:hover, cpcal-day a:hover {
+	background: #f00;
+	color: #fff;
+}
+
+.wp-calendar-thumb img {
+	-moz-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+/* comments */
+
+#comment, #author, #email, #url, #comment-textarea {
+	padding: 2px;
+	color: #000;
+	font-family: 'Verdana' , sans-serif;
+	font-size: 12px;
+	background: #eee;
+	border: 1px solid #888;
+	-moz-border-radius: 6px;
+	-khtml-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+}
+
+#comment-textarea:focus, #comment:hover, #author:hover, #email:hover, #url:hover, #comment:focus, #author:focus, #email:focus, #url:focus {
+	background: #fff;
+}
+
+#text-2 {
+	background: url('images/dragon.png') no-repeat;
+	float: left;
+	height: 155px;
+	width: 186px;
+	position: relative;
+	margin-left: -14px;
+	margin-bottom: -40px;
+}
+
+#text-3 { float: right; margin-top: 14px;}
+
+.sidebar h2, .sidebar-h2 a { 
+	font-size: 14px; 
+	color: #fff;
+	letter-spacing: normal;
+}
+
+.post-text h2, .post-text h2 a { font-size: 18px; }
+
+#footer {
+	color: #bbb;
+}
+
+#footer a {
+	color: #fff;
+}
+
+#footer a:hover {
+	color: #f00;
+}

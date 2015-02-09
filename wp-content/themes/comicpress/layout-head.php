@@ -1,28 +1,14 @@
+<?php if (comicpress_themeinfo('enable_caps')) { ?><div id="content-wrapper-head"></div><?php } ?>
 <div id="content-wrapper">
-	
-	<?php do_action('comicpress-content-area'); ?>
-	<?php if (!get_theme_mod('comicpress-customize-comic-in-column', false)) do_action('comic-area'); ?>
-	
+	<?php if (is_cp_theme_layout('2cr,2cl,3c,3c2l,3c2r')) do_action('comic-area'); ?>
+	<?php if (comicpress_themeinfo('enable_caps')) { ?><div id="subcontent-wrapper-head"></div><?php } ?>
 	<div id="subcontent-wrapper">
-<?php
-if (!comicpress_is_signup() && !comicpress_sidebars_disabled()) {
-		if (comicpress_is_layout('2cl,2clw,3c,3cl,3clgn')) comicpress_get_sidebar('left');
-		if (comicpress_is_layout('3cl')) comicpress_get_sidebar('right');
-}
-?>
-		<div id="content-column">
-			<?php 
-				if (get_theme_mod('comicpress-customize-comic-in-column', false)) do_action('comic-area');
-				if (!comicpress_is_signup() && !comicpress_sidebars_disabled()) {
-					if (comicpress_is_layout('3crgn')) comicpress_get_sidebar('left');
-				}
-			?>
-			<div id="content" class="narrowcolumn">
-				<?php do_action('comic-blog-area'); ?>
-				<?php do_action('comicpress-narrowcolumn-area'); ?>
-				<?php
-					if (!comicpress_sidebars_disabled()) {
-						if (!is_front_page() && !comicpress_themeinfo('over-blog-sidebar-all-posts')) return;
-							comicpress_get_sidebar('over-blog');
-					}
-				?>
+		<?php if (is_cp_theme_layout('2cl,2cvl,3c,3c2l,v3c,v3cl,lgn') && !comicpress_disable_sidebars()) get_sidebar('left'); ?>
+		<?php if (is_cp_theme_layout('3c2l,v3cl') && !comicpress_disable_sidebars()) get_sidebar('right'); ?>
+		<?php if (is_cp_theme_layout('2cvr,2cvl,v3c,v3cr,v3cl,lgn,rgn')) { ?>
+			<div id="section-wrap">
+			<?php do_action('comic-area');?>
+		<?php } ?>
+		<?php if (is_cp_theme_layout('rgn') && !comicpress_disable_sidebars()) get_sidebar('left'); ?>
+		<div id="content" class="narrowcolumn">
+			<?php if (is_active_sidebar('over-blog')) get_sidebar('overblog'); ?>

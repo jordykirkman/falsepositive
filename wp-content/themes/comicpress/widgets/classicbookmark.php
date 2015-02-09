@@ -1,15 +1,16 @@
 <?php
 /*
 Widget Name: (classic) Bookmark
+Widget URI: http://comicpress.net/
 Description: Adds a bookmark set of icons to save the page your own.
-Author: Tyler Martin, Philip M. Hofer (Frumph)
-Author URI: http://frumph.net
-Version: 1.02
+Author: Tyler Martin
+Author URI: http://mindfaucet.com/
+Version: 1.01
 */
 
 function comicpress_classic_bookmark() { 
 global $post, $wp_query; ?>
-	<div class="classic-bookmark">
+	<div class="comic-bookmark">
 		<script language="javascript" type="text/javascript">
 			<!--
 
@@ -109,18 +110,22 @@ global $post, $wp_query; ?>
 class widget_comicpress_classic_bookmark extends WP_Widget {
 	
 	function widget_comicpress_classic_bookmark() {
-		$widget_ops = array('classname' => __CLASS__, 'description' => __('Creates a set of buttons that let the user return to the page they tagged.','comicpress') );
-		$this->WP_Widget(__CLASS__, __('Classic Bookmark','comicpress'), $widget_ops);
+		$widget_ops = array('classname' => 'widget_comicpress_classic_bookmark', 'description' => __('Creates a set of buttons that let the user return to the page they tagged.','comicpress') );
+		$this->WP_Widget('comicpress_classic_bookmark', __('Bookmark - Classic','comicpress'), $widget_ops);
 	}
 	
 	function widget($args, $instance) {
 		global $post, $wp_query;
-		extract($args, EXTR_SKIP);
-		echo $before_widget;
-		$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
-		if ( !empty( $title ) ) { echo $before_title . $title . $after_title; };
-		comicpress_classic_bookmark();
-		echo $after_widget;
+		if (is_home() || is_single()) { 
+			Protect();
+			extract($args, EXTR_SKIP);
+			echo $before_widget;
+			$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
+			if ( !empty( $title ) ) { echo $before_title . $title . $after_title; };
+			comicpress_classic_bookmark();
+			echo $after_widget;
+			UnProtect();
+		}
 	}
 	
 	function update($new_instance, $old_instance) {

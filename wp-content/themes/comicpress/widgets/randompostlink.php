@@ -1,31 +1,12 @@
 <?php
 /*
 Widget Name: Random Post
+Widget URI: http://comicpress.net/
 Description: Display a link to click on to go to a random blog post (not comic).
 Author: Philip M. Hofer (Frumph)
 Author URI: http://frumph.net/
-Version: 1.04
-
-There are some issues with cache' plugins where it's cache'ing the page it randomly goes to, 
-you can do an exclude in cache plugins like wp-supercache, exclude "randompost" in the area as 
-necessary.
-
-*/
-
-if ( isset( $_GET['randompost'] ) )
-	add_action( 'template_redirect', 'comicpress_random_post' );
-
-//Generate a random post page - to use simply create a URL link to "/?randompost"
-function comicpress_random_post() {
-	$randomPostQuery = new WP_Query(); $randomPostQuery->query('showposts=1&orderby=rand');
-	$random_post_id = '';
-	if ($randomPostQuery->have_posts()) {
-		$random_comic_id = get_the_ID();
-	}
-	if ($randomic_post_id)
-		wp_redirect( get_permalink( $random_post_id ) );
-	exit;
-}
+Version: 1.03
+*/	
 	
 class comicpress_random_post_link_widget extends WP_Widget {
 
@@ -43,7 +24,7 @@ class comicpress_random_post_link_widget extends WP_Widget {
 		echo $before_widget;
 		$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']); 
 		if ( !empty( $title ) ) { echo $before_title . $title . $after_title; }; ?>
-			<h2 class="randompost"><a href="/?randompost"><?php _e('Random Post','comicpress'); ?></a></h2>
+			<h2 class="randompost"><a href="/?randompost&amp;nocache=1"><?php _e('Random Post','comicpress'); ?></a></h2>
 		<?php
 		echo $after_widget;
 	}
