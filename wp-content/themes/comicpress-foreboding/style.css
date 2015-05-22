@@ -92,7 +92,11 @@ a:hover { color: #f00; }
 }
 
 .layout-standard .narrowcolumn, .layout-v .narrowcolumn {
-	width: 548px;
+	width: 550px;
+}
+
+#content.narrowcolumn.frontpage {
+	width: 980px;
 }
 
 	.button {
@@ -446,6 +450,27 @@ a:hover { color: #f00; }
 	font-size: 14px; 
 	color: #fff;
 	letter-spacing: normal;
+}
+
+.frontpage-sidebar .widget ul {
+	padding: 0;
+	margin-bottom: 40px;
+	list-style: none;
+}
+
+.frontpage-sidebar .widget ul > li {
+	width: 196px;
+	float: left;
+	margin-bottom: 20px;
+}
+
+.frontpage-sidebar .widget  ul > li img {
+	max-width: 100%;
+}
+
+.frontpage-sidebar .widget {
+	margin-bottom: 20px;
+	clear: both;
 }
 
 .post-text h2, .post-text h2 a { font-size: 18px; }
